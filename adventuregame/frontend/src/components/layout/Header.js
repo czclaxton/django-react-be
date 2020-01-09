@@ -1,6 +1,6 @@
 import React from "react";
 
-const Header = props => {
+export const Header = props => {
   return (
     <nav className="navbar navbar-expand-sm navbar-light bg-light">
       <button
@@ -34,5 +34,3 @@ const Header = props => {
     </nav>
   );
 };
-
-export default Header;
