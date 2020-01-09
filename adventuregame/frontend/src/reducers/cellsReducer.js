@@ -1,4 +1,4 @@
-import { GET_CELLS } from "../actions/types.js";
+// import { GET_CELLS } from "../actions/types.js";
 
 const initialState = {
   //   cells: [

@@ -15,3 +15,9 @@ class CharacterSerializer(serializers.ModelSerializer):
     class Meta:
         model = Character
         fields = '__all__'
+
+
+# class MapSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Map
+#         fields = '__all__'
