@@ -17,3 +17,11 @@ class CharacterViewSet(viewsets.ModelViewSet):
         permissions.AllowAny
     ]
     serializer_class = CharacterSerializer
+
+
+# class MapViewSet(viewsets.ModelViewSet):
+#     queryset = Map.objects.all()
+#     permission_classes = [
+#         permissions.AllowAny
+#     ]
+#     serializer_class = MapSerializer

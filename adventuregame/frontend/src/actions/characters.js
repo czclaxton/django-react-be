@@ -1,14 +1,14 @@
 import axios from "axios";
 
-import { GET_CHARACTERS } from "./types";
+import * as actionTypes from "./cells";
 
 // GET CHARACTERS
-export const getCharacters = () => dispatch => {
+export const getCharacter = username => async dispatch => {
   axios
     .get("/api/characters/")
     .then(res => {
       dispatch({
-        type: GET_CHARACTERS,
+        type: actionTypes.GET_CHARACTERS,
         payload: res.data
       });
     })

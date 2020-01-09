@@ -1,4 +1,4 @@
-import { GET_CHARACTERS } from "../actions/types.js";
+import * as types from "../actions/types";
 
 const initialState = {
   characters: {
@@ -11,7 +11,7 @@ const initialState = {
 
 export const charactersReducer = (state = initialState, action) => {
   switch (action.type) {
-    case GET_CHARACTERS:
+    case types.GET_CHARACTERS_REQUEST:
       return {
         ...state,
         characters: action.payload

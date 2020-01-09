@@ -14,3 +14,20 @@ class Character(models.Model):
     password = models.CharField(max_length=30)
     character_location_x = models.IntegerField(default=0)
     character_location_y = models.IntegerField(default=0)
+
+    # helper method to find the cell
+    # find_cell(self, x, y, grid):
+    #         for cell in grid[y]:
+    #             if cell[x] == = x
+    #             return cell['type']
+
+    # def player_movement(self, charLocation_x, charLocation_y, direction, cells):
+    #     character_position = {'x': charLocation_x, 'y': charLocation_y}
+
+    #     if direction == = 'n':
+    #             check_tile = character_position['y'] - 1
+    #             if check_tile =
+
+
+# class Map(models.Model):
+#     cells = []
