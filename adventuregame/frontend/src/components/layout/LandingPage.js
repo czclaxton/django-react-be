@@ -3,11 +3,11 @@ import PropTypes from "prop-types";
 
 import Display from "./Display/Display";
 import { useSelector, useDispatch } from "react-redux";
-import { getCells, getCharacters } from "../../actions/cells";
+import { getCells } from "../../actions/cells";
 
-export const LandingPage = () => {
+const LandingPage = () => {
   const cells = useSelector(state => state.cellsReducer.cells);
-  const characters = useSelector(state => state.charactersReducer.characters);
+  // const characters = useSelector(state => state.charactersReducer.characters);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -24,3 +24,5 @@ export const LandingPage = () => {
 LandingPage.propTypes = {
   cells: PropTypes.array.isRequired
 };
+
+export default LandingPage;
