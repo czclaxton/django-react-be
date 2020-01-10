@@ -6,6 +6,9 @@ import Display from "./Display/Display";
 // import { getCharacters } from "../../actions/cells";
 import dummydata from "./dummydata";
 
+
+
+
 const LandingPage = () => {
   // const cells = useSelector(state => state.cellsReducer.cells);
   // const characters = useSelector(state => state.charactersReducer.characters);
@@ -17,7 +20,9 @@ const LandingPage = () => {
   return (
     <>
       <h1>ADVENTURE GAME</h1>
-      <Display dummydata={dummydata} />
+    <Display dummydata={dummydata} />
+
+
     </>
   );
 };

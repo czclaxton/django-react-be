@@ -21,3 +21,8 @@ class CharacterSerializer(serializers.ModelSerializer):
 #     class Meta:
 #         model = Map
 #         fields = '__all__'
+
+class moveCharacterSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Cell
+        fields ='__all__'

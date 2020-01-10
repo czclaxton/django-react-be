@@ -2,6 +2,7 @@ import json
 import random
 
 
+
 class CreateDungeon():
     def __init__(self, GRID_WIDTH=40, GRID_HEIGHT=40, MAX_ROOMS=10, ROOM_SIZE_RANGE=[3, 5], grid=[], room={}):
         self.GRID_WIDTH = GRID_WIDTH
@@ -177,6 +178,7 @@ for row in grid:
         tx += 1
     tx = 0
     ty += 1
-    # print(row_string)
+
+    # print(cell_list)
 # with open('data.json', 'w') as outfile:
 #     json.dump(cell_list, outfile)

@@ -5,7 +5,7 @@ const axiosWithAuth = () => {
   const token = localStorage.getItem("token");
   // retrieve API base url from .env
   const apiUrl =
-    "https://lambda-mud-test.herokuapp.com/" || "http://localhost:8000";
+     "http://localhost:8000";
   console.log(apiUrl);
   return axios.create({
     // sets base url, and authorization headers with each axios request

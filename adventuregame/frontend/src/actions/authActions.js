@@ -10,12 +10,11 @@ import {
   REGISTER_USER_FAILURE,
   ERROR_CLEAN
 } from "./types.js";
-
 export const loginUser = (data, history) => {
   return dispatch => {
     dispatch({ type: LOGIN_START });
     return axiosWithAuth()
-      .post("http://localhost:8000/api/characters/", data)
+      .post("api/auth/login", data)
       .then(res => {
         // localStorage.setItem("token", res.data.key);
         //Mixpanel.track('Login Success');
@@ -33,15 +32,16 @@ export const loginUser = (data, history) => {
   };
 };
 export const registerUser = (data, history) => dispatch => {
-  console.log("data:", data);
+  // CHANGE
   dispatch({ type: REGISTER_USER_START });
   return axiosWithAuth()
-    .post("http://localhost:8000/api/characters/", data)
+    .post("api/auth/register", data)
     .then(res => {
       // Mixpanel.track('Register Success');
       //   localStorage.setItem("token", res.data.key);
       dispatch({ type: REGISTER_USER_SUCCESS, payload: res.data });
       history.push(`/`);
+      return res.data
     })
     .catch(err => {
       // Mixpanel.track('Login Failed');
