@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Cell(models.Model):
@@ -10,6 +11,8 @@ class Cell(models.Model):
 
 
 class Character(models.Model):
+    owner = models.ForeignKey(
+        User, related_name="game", on_delete=models.CASCADE, null=True)
     username = models.CharField(max_length=30, unique=True)
     password = models.CharField(max_length=30)
     character_location_x = models.IntegerField(default=0)
