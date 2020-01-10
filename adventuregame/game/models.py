@@ -13,10 +13,10 @@ class Cell(models.Model):
 class Character(models.Model):
     owner = models.ForeignKey(
         User, related_name="game", on_delete=models.CASCADE, null=True)
-    username = models.CharField(max_length=30, unique=True)
-    password = models.CharField(max_length=30)
     character_location_x = models.IntegerField(default=0)
     character_location_y = models.IntegerField(default=0)
+    # username = models.CharField(max_length=30, unique=True)
+    # password = models.CharField(max_length=30)
 
     # helper method to find the cell
     # find_cell(self, x, y, grid):
