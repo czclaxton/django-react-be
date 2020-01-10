@@ -1,8 +1,9 @@
-import React from "react";
-import { Form, Field, withFormik } from "formik";
-import * as Yup from "yup";
-import { loginUser, errorClean } from "../../actions/authActions";
-import { connect } from "react-redux";
+import React from 'react';
+import { Form, Field, withFormik } from 'formik';
+import * as Yup from 'yup';
+import { loginUser, errorClean } from '../../actions/authActions';
+import { connect } from 'react-redux';
+import {getCharacter} from '../../actions/characters';
 
 export const Login = props => {
   return (
@@ -48,22 +49,22 @@ export const Login = props => {
 const FormikLoginForm = withFormik({
   mapPropsToValues({ username, password }) {
     return {
-      username: username || "",
-      password: password || ""
+      username: username || '',
+      password: password || ''
     };
   },
 
   validationSchema: Yup.object().shape({
-    username: Yup.string().required("Please enter a username"),
-    password: Yup.string().required("Enter a password")
+    username: Yup.string().required('Please enter a username'),
+    password: Yup.string().required('Enter a password')
   }),
 
   handleSubmit(values, { props }) {
-    props.loginUser(values, props.history);
+    props.loginUser(values, props.history).then(props.getCharacter).then(() => props.history.push('/'));
   }
 })(Login);
 
-export default connect(null, { loginUser, errorClean })(
-  FormikLoginForm
-);
-
+export default connect(
+  null,
+  { loginUser, errorClean, getCharacter }
+)(FormikLoginForm);

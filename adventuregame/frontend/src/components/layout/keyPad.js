@@ -44,7 +44,7 @@ const Keypad = props => {
       >
         W
       </button>
-      <button onClick={() => console.log('YEHASDSGOSD')}>W</button>
+
     </div>
   );
 };
