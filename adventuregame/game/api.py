@@ -12,11 +12,17 @@ class CellViewSet(viewsets.ModelViewSet):
 
 
 class CharacterViewSet(viewsets.ModelViewSet):
-    queryset = Character.objects.all()
     permission_classes = [
-        permissions.AllowAny
+        permissions.IsAuthenticated
     ]
+
     serializer_class = CharacterSerializer
+
+    def get_queryset(self):
+        return self.request.user.characters.all()
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
 
 
 # class MapViewSet(viewsets.ModelViewSet):
