@@ -10,18 +10,21 @@ import FormikLoginForm from "./forms/Login";
 import { Provider } from "react-redux";
 import store from "../store";
 
+
 const App = props => {
   return (
+    <Router>
     <Provider store={store}>
-      <Router>
+
         <Route path="/" component={Header} />
         <Switch>
           <Route exact path="/" component={LandingPage} />
           <Route path="/register" component={FormikRegistrationForm} />
           <Route path="/login" component={FormikLoginForm} />
         </Switch>
-      </Router>
+
     </Provider>
+    </Router>
   );
 };
 

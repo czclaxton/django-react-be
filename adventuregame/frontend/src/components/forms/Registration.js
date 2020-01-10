@@ -1,8 +1,9 @@
-import React from "react";
-import { Form, Field, withFormik } from "formik";
-import * as Yup from "yup";
-import { registerUser, errorClean } from "../../actions/authActions";
-import { connect } from "react-redux";
+import React from 'react';
+import { Form, Field, withFormik } from 'formik';
+import * as Yup from 'yup';
+import { registerUser, errorClean } from '../../actions/authActions';
+import { createCharacter, getCharacter} from '../../actions/characters';
+import { connect } from 'react-redux';
 
 export const Registration = props => {
   return (
@@ -48,21 +49,28 @@ export const Registration = props => {
 const FormikResgistrationForm = withFormik({
   mapPropsToValues({ username, password }) {
     return {
-      username: username || "",
-      password: password || ""
+      username: username || '',
+      password: password || ''
     };
   },
 
   validationSchema: Yup.object().shape({
-    username: Yup.string().required("Please enter a username"),
-    password: Yup.string().required("Enter a password")
+    username: Yup.string().required('Please enter a username'),
+    password: Yup.string().required('Enter a password')
   }),
 
   handleSubmit(values, { props }) {
-    props.registerUser(values, props.history);
+    props.registerUser(values, props.history).then(user => {
+      return props.getCharacter(user.user).then(character => {
+        if (character === undefined) {
+          return props.createCharacter({ user_id: user.user.id });
+        }
+      });
+    });
   }
 })(Registration);
 
-export default connect(null, { registerUser, errorClean })(
-  FormikResgistrationForm
-);
+export default connect(
+  null,
+  { registerUser, errorClean, getCharacter, createCharacter }
+)(FormikResgistrationForm);
