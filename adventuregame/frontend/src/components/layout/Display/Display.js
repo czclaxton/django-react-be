@@ -1,6 +1,6 @@
-import React from 'react';
-import Keypad from '../keyPad';
-import { connect } from 'react-redux';
+import React from "react";
+import Keypad from "../keyPad";
+import { connect } from "react-redux";
 
 const Display = props => {
   const width = props.dummydata.sort((a, b) => {
@@ -21,40 +21,45 @@ const Display = props => {
   }
 
   return (
-    <>
-      {grid.map(row => (
-        <div style={{ height: 22 }}>
-          {row.map(cell => {
-            let color = '';
-            if (cell.type === 'floor') {
-              color = 'brown';
-            }
-            if (cell.type === 'door') {
-              color = 'gray';
-            }
-            if (cell.type === 0) {
-              color = 'black';
-            }
-            if (cell.x === props.character_x && cell.y === props.character_y) {
-              color = 'yellow';
-            }
-            return (
-              <div
-                style={{
-                  backgroundColor: color,
-                  width: 22,
-                  height: 22,
-                  display: 'inline-block'
-                }}
-              />
-            );
-          })}
-        </div>
-      ))}
+    <div style={{ display: "flex", flexDirection: "row" }}>
       <div>
+        {grid.map(row => (
+          <div style={{ height: 22 }}>
+            {row.map(cell => {
+              let color = "";
+              if (cell.type === "floor") {
+                color = "brown";
+              }
+              if (cell.type === "door") {
+                color = "gray";
+              }
+              if (cell.type === 0) {
+                color = "black";
+              }
+              if (
+                cell.x === props.character_x &&
+                cell.y === props.character_y
+              ) {
+                color = "yellow";
+              }
+              return (
+                <div
+                  style={{
+                    backgroundColor: color,
+                    width: 22,
+                    height: 22,
+                    display: "inline-block"
+                  }}
+                />
+              );
+            })}
+          </div>
+        ))}
+      </div>
+      <div style={{ marginLeft: "10px" }}>
         <Keypad />
       </div>
-    </>
+    </div>
   );
 };
 const mapStateToProps = state => {
@@ -64,7 +69,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  null
-)(Display);
+export default connect(mapStateToProps, null)(Display);

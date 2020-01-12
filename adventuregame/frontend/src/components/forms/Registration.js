@@ -1,15 +1,15 @@
-import React from 'react';
-import { Form, Field, withFormik } from 'formik';
-import * as Yup from 'yup';
-import { registerUser, errorClean } from '../../actions/authActions';
-import { createCharacter, getCharacter} from '../../actions/characters';
-import { connect } from 'react-redux';
+import React from "react";
+import { Form, Field, withFormik } from "formik";
+import * as Yup from "yup";
+import { registerUser, errorClean } from "../../actions/authActions";
+import { createCharacter, getCharacter } from "../../actions/characters";
+import { connect } from "react-redux";
 
 export const Registration = props => {
   return (
     <>
-      <large> Create a new account</large>
-      <Form>
+      <large style={{ marginLeft: "50px" }}> Create a new account</large>
+      <Form style={{ width: "50vw", marginLeft: "50px" }}>
         <div class="form-group">
           <label htmlFor="exampleInputEmail1">Username</label>
           <Field
@@ -49,14 +49,14 @@ export const Registration = props => {
 const FormikResgistrationForm = withFormik({
   mapPropsToValues({ username, password }) {
     return {
-      username: username || '',
-      password: password || ''
+      username: username || "",
+      password: password || ""
     };
   },
 
   validationSchema: Yup.object().shape({
-    username: Yup.string().required('Please enter a username'),
-    password: Yup.string().required('Enter a password')
+    username: Yup.string().required("Please enter a username"),
+    password: Yup.string().required("Enter a password")
   }),
 
   handleSubmit(values, { props }) {
@@ -70,7 +70,9 @@ const FormikResgistrationForm = withFormik({
   }
 })(Registration);
 
-export default connect(
-  null,
-  { registerUser, errorClean, getCharacter, createCharacter }
-)(FormikResgistrationForm);
+export default connect(null, {
+  registerUser,
+  errorClean,
+  getCharacter,
+  createCharacter
+})(FormikResgistrationForm);
