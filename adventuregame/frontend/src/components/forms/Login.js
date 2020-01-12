@@ -7,8 +7,8 @@ import { connect } from "react-redux";
 export const Login = props => {
   return (
     <>
-      <large> Login</large>
-      <Form>
+      <large style={{ marginLeft: "50px" }}> Login</large>
+      <Form style={{ width: "50vw", marginLeft: "50px" }}>
         <div class="form-group">
           <label htmlFor="exampleInputEmail1">Username</label>
           <Field
@@ -63,7 +63,4 @@ const FormikLoginForm = withFormik({
   }
 })(Login);
 
-export default connect(null, { loginUser, errorClean })(
-  FormikLoginForm
-);
-
+export default connect(null, { loginUser, errorClean })(FormikLoginForm);
